@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enviar correo al moderador</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: black;
+    }
+
+    header {
+      background-color: black;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    #contenedor {
+      display: flex;
+      justify-content: center;
+    }
+
+    #correo-section {
+      width: 80%;
+      background-color: #FCFFFE;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      animation: slideInDown 0.5s ease;
+    }
+
+    @keyframes slideInDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    #mensaje {
+      width: 100%;
+      height: 120px;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: vertical;
+    }
+
+    #enviar-boton {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #enviar-boton:hover {
+      background-color: #45a049;
+    }
+
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    @media screen and (max-width: 600px) {
+      #correo-section {
+        width: 90%;
+      }
+    }
+  </style>
+  <script>
+    window.onload = function() {
+      function enviarCorreo() {
+        var destinatario = "alextsuke366@gmail.com";
+        
+        var asunto = "Asunto del correo";
+        
+        var cuerpo = document.getElementById("mensaje").value;
+        var enlaceCorreo = "mailto:" + destinatario + "?subject=" + encodeURIComponent(asunto) + "&body=" + encodeURIComponent(cuerpo);
+        window.location.href = enlaceCorreo;
+      }
+      document.getElementById("enviar-boton").addEventListener("click", enviarCorreo);
+    };
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Enviar correo al creador</h1>
+  </header>
+
+  <div id="contenedor">
+    <section id="correo-section">
+      <h2>Escribe tu mensaje:</h2>
+      <textarea id="mensaje" rows="5" placeholder="Escribe aquí tu mensaje para el creador. Puedes enviar sugerencias para mejorar la IA o reportar errores encontrados en la ia."></textarea>
+      <button id="enviar-boton">Enviar correo</button>
+    </section>
+  </div>
+</body>
+</html>

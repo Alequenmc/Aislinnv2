@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Únete al Equipo de Moderadores de Aislinn</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="mode.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>¡Únete al Equipo de Moderadores de Aislinn!</h1>
+    </header>
+    <section>
+        <form id="moderatorForm" action="#" method="POST">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+            <label for="telefono">Teléfono:</label>
+            <input type="tel" id="telefono" name="telefono"><br>
+            <label for="hora">Hora de disponibilidad:</label>
+            <input type="text" id="hora" name="hora" required><br>
+            <label for="turno">Turno preferido:</label>
+            <select id="turno" name="turno">
+                <option value="mañana">Mañana</option>
+                <option value="tarde">Tarde</option>
+                <option value="noche">Noche</option>
+            </select><br>
+            <label for="cargo">Cargo:</label>
+            <input type="text" id="cargo" name="cargo" required><br>
+            <label for="experiencia">Experiencia previa:</label>
+            <select id="experiencia" name="experiencia">
+                <option value="ninguna">Ninguna</option>
+                <option value="poca">Poca</option>
+                <option value="moderada">Moderada</option>
+                <option value="avanzada">Avanzada</option>
+            </select><br>
+            <label for="motivacion">Motivación para ser moderador:</label><br>
+            <textarea id="motivacion" name="motivacion" rows="4" required></textarea><br>
+            <input type="checkbox" id="privacidad" name="privacidad" required>
+            <label for="privacidad">Acepto la <a href="privacy.html" target="_blank">política de privacidad</a>.</label><br>
+            <input type="submit" value="Enviar Solicitud">
+        </form>
+        <div id="mensajeExito" style="display: none;">Tu solicitud ha sido enviada con éxito. Nos pondremos en contacto contigo pronto.</div>
+    </section>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.getElementById("moderatorForm");
+            const successMessage = document.getElementById("mensajeExito");
+
+            form.addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                if (form.checkValidity()) {
+                    enviarFormulario();
+                } else {
+                    mostrarMensajeError("Por favor completa todos los campos.");
+                }
+            });
+
+            function enviarFormulario() {
+                const formData = new FormData(form);
+                fetch(form.action, {
+                    method: "POST",
+                    body: formData
+                })
+                .then(response => {
+                    if (response.ok) {
+                        mostrarMensajeExito();
+                    } else {
+                        mostrarMensajeError("Hubo un error al enviar la solicitud. Por favor, inténtalo de nuevo más tarde.");
+                    }
+                })
+                .catch(error => {
+                    mostrarMensajeError("Hubo un error al enviar la solicitud. Por favor, inténtalo de nuevo más tarde.");
+                    console.error("Error:", error);
+                });
+            }
+
+            function mostrarMensajeExito() {
+                form.reset();
+                successMessage.style.display = "block";
+                setTimeout(function() {
+                    successMessage.style.display = "none";
+                }, 5000);
+            }
+
+            function mostrarMensajeError(mensaje) {
+                alert(mensaje);
+            }
+        });
+    </script>
+    <form id="moderatorForm" action="procesar_solicitud.php" method="POST">
+</body>
+</html>

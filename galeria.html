@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .image-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-gap: 20px;
+    }
+    .image-container img {
+      max-width: 100%;
+      height: auto;
+      border: 2px solid #ccc; /* Añadir borde alrededor de cada imagen */
+      border-radius: 8px; /* Añadir bordes redondeados */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Galería de Aislinn</h1>
+  </header>
+
+  <section id="gallery-images">
+    <h2>Imágenes de Aislinn</h2>
+    <div class="image-container">
+      <img src="" alt="Imagen no disponible">
+      <img src="" alt="Imagen no disponible">
+      <img src="" alt="Imagen no disponible">
+      <!-- Añade más imágenes según sea necesario -->
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Aislinn - Todas las imágenes con copyright-Prohido el uso inadecuado</p>
+  </footer>
+</body>
+</html>
